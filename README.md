@@ -12,3 +12,5 @@ python -m unittest discover -s . -p 'test_*.py'
 
 All unit tests are in the test directory
 
+CI
+[![Build Status](https://snap-ci.com/mihirk/binary_search_tree/branch/master/build_image)](https://snap-ci.com/mihirk/binary_search_tree/branch/master)
