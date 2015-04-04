@@ -3,7 +3,7 @@ class Node:
         self.value = value
 
     @classmethod
-    def factory(cls, value):
+    def factory(cls, value=None):
         node = cls(value)
         node.left = cls()
         node.right = cls()
