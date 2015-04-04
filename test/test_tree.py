@@ -71,3 +71,23 @@ class TestTree(TestCase):
         self.assertEqual(10, tree.root_node.left.value)
         self.assertEqual(11, tree.root_node.left.right.value)
         self.assertEqual(1, tree.root_node.left.left.value)
+
+    def test_tree_search(self):
+        tree = Tree()
+        tree.insert(Node.factory(12))
+        tree.insert(Node.factory(12))
+        tree.insert(Node.factory(10))
+        tree.insert(Node.factory(11))
+        tree.insert(Node.factory(1))
+        tree.insert(Node.factory(100))
+        self.assertTrue(tree.search(Node.factory(12)))
+        self.assertTrue(tree.search(Node.factory(10)))
+        self.assertTrue(tree.search(Node.factory(11)))
+        self.assertTrue(tree.search(Node.factory(1)))
+        self.assertTrue(tree.search(Node.factory(100)))
+        self.assertFalse(tree.search(Node.factory(None)))
+        self.assertFalse(tree.search(Node.factory(123)))
+        self.assertFalse(tree.search(Node.factory(0)))
+        self.assertFalse(tree.search(Node.factory(-01)))
+        self.assertFalse(tree.search(Node.factory(1001)))
+    
