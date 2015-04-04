@@ -14,15 +14,18 @@ class Tree:
             root_node.assign(new_node)
         elif new_node < root_node:
             self.__insert_node(new_node, root_node.left)
-        elif new_node >= root_node:
+        elif new_node > root_node:
             self.__insert_node(new_node, root_node.right)
+        
+    def inorder(self):
+        return self.__print_tree(self.root_node)
 
-    def print_tree(self, node):
+    def __print_tree(self, node):
         if node.is_empty():
             return
-        self.print_tree(node.left)
+        self.__print_tree(node.left)
         print(node)
-        self.print_tree(node.right)
+        self.__print_tree(node.right)
 
     def search(self, node):
         return self.__search_node(node, self.root_node)
@@ -34,7 +37,7 @@ class Tree:
             result = node == root_node
         elif node < root_node:
             result = self.__search_node(node, root_node.left)
-        else:
+        elif node > root_node:
             result = self.__search_node(node, root_node.right)
         return result
 
@@ -50,5 +53,14 @@ class Tree:
             self.insert(right_subtree)
         elif node < root_node:
             self.__delete_node(node, root_node.left)
-        elif node >= root_node:
+        elif node > root_node:
             self.__delete_node(node, root_node.right)
+
+    def size(self):
+        return self.__size(self.root_node)
+
+    def __size(self, root_node):
+        if root_node.is_empty():
+            return 0
+        else:
+            return self.__size(root_node.left) + self.__size(root_node.right) + 1

@@ -54,8 +54,7 @@ class TestTree(TestCase):
         self.assertIsNotNone(tree.root_node.value)
         self.assertEqual(12, tree.root_node.value)
         self.assertIsNone(tree.root_node.left.value)
-        self.assertIsNotNone(tree.root_node.right.value)
-        self.assertEqual(12, tree.root_node.right.value)
+        self.assertIsNone(tree.root_node.right.value)
 
     def test_tree_multi_level_insertion(self):
         tree = Tree()
@@ -66,8 +65,7 @@ class TestTree(TestCase):
         tree.insert(Node.factory(1))
         tree.insert(Node.factory(100))
         self.assertEqual(12, tree.root_node.value)
-        self.assertEqual(12, tree.root_node.right.value)
-        self.assertEqual(100, tree.root_node.right.right.value)
+        self.assertEqual(100, tree.root_node.right.value)
         self.assertEqual(10, tree.root_node.left.value)
         self.assertEqual(11, tree.root_node.left.right.value)
         self.assertEqual(1, tree.root_node.left.left.value)
@@ -94,7 +92,6 @@ class TestTree(TestCase):
     def test_deletion_leaf_node(self):
         tree = Tree()
         tree.insert(Node.factory(12))
-        tree.insert(Node.factory(12))
         tree.insert(Node.factory(10))
         tree.insert(Node.factory(11))
         tree.insert(Node.factory(1))
@@ -106,8 +103,7 @@ class TestTree(TestCase):
         self.assertFalse(tree.search(Node.factory(1)))
         self.assertTrue(tree.search(Node.factory(100)))
         self.assertEqual(12, tree.root_node.value)
-        self.assertEqual(12, tree.root_node.right.value)
-        self.assertEqual(100, tree.root_node.right.right.value)
+        self.assertEqual(100, tree.root_node.right.value)
         self.assertEqual(10, tree.root_node.left.value)
         self.assertEqual(11, tree.root_node.left.right.value)
         self.assertEqual(None, tree.root_node.left.left.value)
